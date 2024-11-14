@@ -1,0 +1,12 @@
+def cargar_datos():
+    # Limpiar filas existentes en el Treeview
+    for row in tvtAgregaralumnos.get_children():
+        tvtAgregaralumnos.delete(row)
+
+    # Obtener todos los registros de la base de datos
+    cursor.execute("SELECT * FROM asistencias")
+    filas = cursor.fetchall()
+
+    # Insertar cada fila en el Treeview
+    for fila in filas:
+        tvtAgregaralumnos.insert("", "end", values=fila)
